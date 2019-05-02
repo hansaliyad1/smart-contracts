@@ -1,0 +1,8 @@
+
+\.idea/
+
+client-smart-contract/package-lock\.json
+
+server-smart-contract/node_modules/
+
+server-smart-contract/package-lock\.json

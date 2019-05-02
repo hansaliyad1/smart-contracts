@@ -1,0 +1,39 @@
+<form [formGroup]="form" (submit)="onRetrieveAsset()">
+  <fieldset>
+    <legend>Retrieve Assets</legend>
+    <small>Required fields are marked with *</small>
+    <hr/>
+
+    <div class="form-group">
+      <label>* Public Key</label>
+      <input type="text" name="public_key" class="form-control" formControlName="public_key">
+    </div>
+
+
+    <input [disabled]="processing" type="submit" class="btn btn-primary" value="Retrieve" />
+  </fieldset>
+</form>
+<hr/>
+<!-- Custom Success/Error Message -->
+<div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
+<div *ngIf="show">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Transaction ID</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let txid of txids">
+        <td>{{ txid.transaction_id }}</td>
+        <td><a target="_blank" routerLink="/assets-info/{{ txid.transaction_id }}"><button type="button" class="btn btn-primary btn-sm">More Info</button></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
